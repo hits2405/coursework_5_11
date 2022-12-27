@@ -100,13 +100,16 @@ def choose_hero():
         weapon_name = request.form['weapon']
         unit_class = request.form['unit_class']
 
+        player_unit_class = unit_classes.get(unit_class)
+        if not player_unit_class:
+            return 'Ошибка героя', 300
+
         player = PlayerUnit(name=name, unit_class=unit_classes[unit_class])
         equipment = Equipment()
         player.equip_armor(equipment.get_armor(armor_name))
         player.equip_weapon(equipment.get_weapon(weapon_name))
 
         heroes['player'] = player
-
         return redirect(url_for('choose_enemy'))
 
 
