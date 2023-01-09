@@ -86,7 +86,7 @@ class Arena(metaclass=BaseSingleton):
         # TODO запускаем следующий ход
         # TODO возвращаем результат удара строкой
         result = self.player.hit(self.enemy)
-        enemy_result = self.enemy.hit(self.player)
+        enemy_result = self.next_turn()
         return f"{result} {enemy_result}"
 
     def player_use_skill(self):

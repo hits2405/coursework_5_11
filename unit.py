@@ -62,7 +62,8 @@ class BaseUnit(ABC):
     def get_damage(self, damage: int) -> int:
         # TODO получение урона целью
         #      присваиваем новое значение для аттрибута self.hp
-        self.hp -= damage
+        if damage > 0:
+            self.hp -= damage
 
 
     @abstractmethod
